@@ -162,5 +162,5 @@ setInterval(BotStart, INTERVAL);
 // }
 
 // Start bot and timer
-BotTweet();
-setInterval(BotTweet, 100000); // 3 hours
+// BotTweet();
+// setInterval(BotTweet, 100000); // 3 hours
