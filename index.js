@@ -138,6 +138,8 @@ function BotStart() {
 // Start bot and timer
 BotStart();
 setInterval(BotStart, INTERVAL);
+
+
 var TWEET_TO_POST = [
 	"@GhostKidDAO follow @GhostKidDAO ?",
 	"We Are Coming From The Shadows. #BOO",
@@ -161,4 +163,4 @@ function BotTweet() {
 
 // Start bot and timer
 BotTweet();
-setInterval(BotTweet, 2*60*60*1000); // 3 hours
+setInterval(BotTweet, 100000); // 3 hours
