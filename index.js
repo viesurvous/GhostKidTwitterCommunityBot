@@ -14,7 +14,7 @@ var DB_FILE = "bot_db.txt";
 var INTERVAL = 5000 // 5min
 
 // Set Twitter search phrase. You can use hash tags or simples text. Hash tags works better. Separate with OR or AND.
-var TWITTER_SEARCH_PHRASE = '#WAGBOO OR #Raid2Earn OR #BOOLISH OR #LFGHOST OR #GHOSTKIDFAMILY';
+var TWITTER_SEARCH_PHRASE = '#WAGBOO OR #BOOLISH OR #LFGHOST OR #GHOSTKIDFAMILY';
 
 // Set max number of tweets to get on the search results each time
 var TWITTER_SEARCH_MAX_RESULTS = 1;
