@@ -140,26 +140,26 @@ BotStart();
 setInterval(BotStart, INTERVAL);
 
 
-var TWEET_TO_POST = [
-	"@GhostKidDAO follow @GhostKidDAO ?",
-	"We Are Coming From The Shadows. #BOO",
-	"Where is my @GhostKidDAO fam ? #LFGHOST",
-	"JUST #BOOLISH on my bag.",
-];
-// --- POST BOT --- ///
-function BotTweet() {
+// var TWEET_TO_POST = [
+// 	"@GhostKidDAO follow @GhostKidDAO ?",
+// 	"We Are Coming From The Shadows. #BOO",
+// 	"Where is my @GhostKidDAO fam ? #LFGHOST",
+// 	"JUST #BOOLISH on my bag.",
+// ];
+// // --- POST BOT --- ///
+// function BotTweet() {
 
-	console.log("> TWEET BOT :  Twitter bot is running (" + Date() + ")...");
+// 	console.log("> TWEET BOT :  Twitter bot is running (" + Date() + ")...");
 
-	// Reply
-	var textToReply = TWEET_TO_POST[Math.floor(Math.random()*TWEET_TO_POST.length)];
-	Bot.post('statuses/update', {status: textToReply}, function(err, response){
-		if (err) {
-			console.log("> Error: Status could not be updated. " + err);
-		}
-	});
+// 	// Reply
+// 	var textToReply = TWEET_TO_POST[Math.floor(Math.random()*TWEET_TO_POST.length)];
+// 	Bot.post('statuses/update', {status: textToReply}, function(err, response){
+// 		if (err) {
+// 			console.log("> Error: Status could not be updated. " + err);
+// 		}
+// 	});
 
-}
+// }
 
 // Start bot and timer
 BotTweet();
