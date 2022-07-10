@@ -98,7 +98,7 @@ function BotStart() {
 						        }
 						    });
 
-							Reply
+							// Reply
 							var textToReply = TWEETS_TO_REPLY[Math.floor(Math.random()*TWEETS_TO_REPLY.length)];
 							textToReply = "@" + userHandle + " " + textToReply;
 							Bot.post('statuses/update', {status: textToReply, in_reply_to_status_id: id}, function(err, response){
