@@ -78,11 +78,3 @@ npm start
 * Create new branch to make your changes
 * Commit all your changes to your branch
 * Submit a [pull request](http://help.github.com/pull-requests/)
-
-## Contact
-
-Feel free to get in touch.
-
-* Website: <http://cetorres.com>
-* My company (Cacira): <http://cacira.com>
-* Twitter: [@cetorres](http://twitter.com/cetorres)
