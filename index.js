@@ -11,20 +11,19 @@ var TWITTER_ACCESS_TOKEN_SECRET = 'eNA77UrE0YJMEc5bWJAw62SeCOfCc1m5Rmdo8YVxEnkS5
 var DB_FILE = "bot_db.txt";
 
 // Set interval time. Try to use a not so small interval to avoid Twitter to lock your account.
-var INTERVAL = 60000 * 5 // 5min
+var INTERVAL = 60000 * 10 // 5min
 
 // Set Twitter search phrase. You can use hash tags or simples text. Hash tags works better. Separate with OR or AND.
 var TWITTER_SEARCH_PHRASE = '#BOO OR #WAGBOO OR #BOOLISH OR #LFGHOST OR #GHOSTKIDFAMILY OR @GhostKidDAO';
 
 // Set max number of tweets to get on the search results each time
-var TWITTER_SEARCH_MAX_RESULTS = 2;
+var TWITTER_SEARCH_MAX_RESULTS = 5;
 
 // Set tweets to reply
 var TWEETS_TO_REPLY = [
-	"#BOO ! 👻",
+	"#BOO 👻",
 	"#WAGBOO 👻",
 	"#LFGHOST 👻",
-	"Lets raid! #WAGBOO #BOO 👻"
 ];
 
 // Init Twit lib
@@ -106,13 +105,6 @@ function BotStart() {
 						          console.log("> Error: Status could not be updated. " + err);
 						        }
 						    });
-
-							// Follow
-							// Bot.post('friendships/create', {user_id: userId, follow: "true"}, function(err, response){
-						    //     if (err) {
-						    //       console.log("> Error: Could not follow user " + userId + ". " + err);
-						    //     }
-						    // });
 
 						}
 
