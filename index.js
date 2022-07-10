@@ -2,28 +2,31 @@ var Twit = require('twit');
 var fs = require('fs');
 
 // Set Twitter API keys
-var TWITTER_CONSUMER_KEY = 'jVvbwIKoSyG2xRgX8g2oivENh';
-var TWITTER_CONSUMER_SECRET = 'WvPesB2kI7IeTG5FHFEw7hq3PcDm0pJ6usqNS0B5zsTAVcumSb';
-var TWITTER_ACCESS_TOKEN = '618303200-Dizg0PyRvSRFBHqUu6SmtStfjIfD2gXA1h1B6BuI';
-var TWITTER_ACCESS_TOKEN_SECRET = 'eNA77UrE0YJMEc5bWJAw62SeCOfCc1m5Rmdo8YVxEnkS5';
+var TWITTER_CONSUMER_KEY = 'xGJrLyNngo8c9t3BP4AtCLxAU';
+var TWITTER_CONSUMER_SECRET = 'xCNtQCKJZjNhiix0bKJflq9lLJr8Xg66o5G4D8nqVCUKHS5toF';
+var TWITTER_ACCESS_TOKEN = '618303200-O1oyLn8ANHG1TMhzlnphjdSrgxnfwRsWBxuATtAg';
+var TWITTER_ACCESS_TOKEN_SECRET = 'Q3jQraeUCaGX0MMXV4kyy2dxHobihc28q4CwAbTHcymuB';
 
 // Database file
 var DB_FILE = "bot_db.txt";
 
 // Set interval time. Try to use a not so small interval to avoid Twitter to lock your account.
-var INTERVAL = 60000 * 10 // 5min
+var INTERVAL = 5000 // 5min
 
 // Set Twitter search phrase. You can use hash tags or simples text. Hash tags works better. Separate with OR or AND.
-var TWITTER_SEARCH_PHRASE = '#BOO OR #WAGBOO OR #BOOLISH OR #LFGHOST OR #GHOSTKIDFAMILY OR @GhostKidDAO';
+var TWITTER_SEARCH_PHRASE = '#WAGBOO OR #Raid2Earn OR #BOOLISH OR #LFGHOST OR #GHOSTKIDFAMILY';
 
 // Set max number of tweets to get on the search results each time
-var TWITTER_SEARCH_MAX_RESULTS = 5;
+var TWITTER_SEARCH_MAX_RESULTS = 1;
 
 // Set tweets to reply
-var TWEETS_TO_REPLY = [
-	"#BOO 👻",
-	"#WAGBOO 👻",
-	"#LFGHOST 👻",
+var HASHTAGS_TO_REPLY = [
+	"#BOOLISH",
+	"#WAGBOO",
+	"#LFGHOST",
+	"#BOO",
+	"We Are Coming From The Shadows! #BOO #WAGBOO",
+	"#GhostFollowGhost, right ?"
 ];
 
 // Init Twit lib
@@ -43,7 +46,7 @@ function BotStart() {
 		count: TWITTER_SEARCH_MAX_RESULTS
 	}
 
-	console.log("> Twitter bot is running (" + Date() + ")...")
+	console.log("> ENGAGEMENT bot is running (" + Date() + ")...");
 
 	Bot.get('search/tweets', query, BotQueryResults);
 
@@ -97,12 +100,17 @@ function BotStart() {
 						        }
 						    });
 
-							// Reply
-							var textToReply = TWEETS_TO_REPLY[Math.floor(Math.random()*TWEETS_TO_REPLY.length)];
-							textToReply = "@" + userHandle + " " + textToReply;
-							Bot.post('statuses/update', {status: textToReply, in_reply_to_status_id: id}, function(err, response){
+							// RT
+							Bot.post('statuses/retweet', {id: id}, function(err, response){
 						        if (err) {
-						          console.log("> Error: Status could not be updated. " + err);
+						           console.log("> Error: Tweet " + id + " could not be retweeted. " + err);
+						        }
+						    });
+
+							// Follow
+							Bot.post('friendships/create', {user_id: userId, follow: "false"}, function(err, response){
+						       if (err) {
+						         console.log("> Error: Could not follow user " + userId + ". " + err);
 						        }
 						    });
 
@@ -130,3 +138,22 @@ function BotStart() {
 // Start bot and timer
 BotStart();
 setInterval(BotStart, INTERVAL);
+
+// --- POST BOT --- ///
+function BotTweet() {
+
+	console.log("> TWEET BOT :  Twitter bot is running (" + Date() + ")...");
+
+	// Reply
+	var textToReply = TWEET_TO_POST[Math.floor(Math.random()*TWEET_TO_POST.length)];
+	Bot.post('statuses/update', {status: textToReply}, function(err, response){
+		if (err) {
+			console.log("> Error: Status could not be updated. " + err);
+		}
+	});
+
+}
+
+// Start bot and timer
+BotTweet();
+setInterval(BotStart, 3*60*60*1000); // 3 hours
