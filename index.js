@@ -2,10 +2,10 @@ var Twit = require('twit');
 var fs = require('fs');
 
 // Set Twitter API keys
-var TWITTER_CONSUMER_KEY = 'xGJrLyNngo8c9t3BP4AtCLxAU';
-var TWITTER_CONSUMER_SECRET = 'xCNtQCKJZjNhiix0bKJflq9lLJr8Xg66o5G4D8nqVCUKHS5toF';
-var TWITTER_ACCESS_TOKEN = '618303200-O1oyLn8ANHG1TMhzlnphjdSrgxnfwRsWBxuATtAg';
-var TWITTER_ACCESS_TOKEN_SECRET = 'Q3jQraeUCaGX0MMXV4kyy2dxHobihc28q4CwAbTHcymuB';
+var TWITTER_CONSUMER_KEY = '';
+var TWITTER_CONSUMER_SECRET = '';
+var TWITTER_ACCESS_TOKEN = '';
+var TWITTER_ACCESS_TOKEN_SECRET = '';
 
 // Database file
 var DB_FILE = "bot_db.txt";
