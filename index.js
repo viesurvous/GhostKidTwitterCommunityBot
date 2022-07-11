@@ -11,23 +11,14 @@ var TWITTER_ACCESS_TOKEN_SECRET = 'Q3jQraeUCaGX0MMXV4kyy2dxHobihc28q4CwAbTHcymuB
 var DB_FILE = "bot_db.txt";
 
 // Set interval time. Try to use a not so small interval to avoid Twitter to lock your account.
-var INTERVAL = 60000 // 5min
+var INTERVAL = 5000 // 5min
 
 // Set Twitter search phrase. You can use hash tags or simples text. Hash tags works better. Separate with OR or AND.
 var TWITTER_SEARCH_PHRASE = '#WAGBOO OR #BOOLISH OR #LFGHOST OR #GHOSTKIDFAMILY OR #WEEPISH';
 
 // Set max number of tweets to get on the search results each time
-var TWITTER_SEARCH_MAX_RESULTS = 6;
+var TWITTER_SEARCH_MAX_RESULTS = 2;
 
-// Set tweets to reply
-var HASHTAGS_TO_REPLY = [
-	"#BOOLISH",
-	"#WAGBOO",
-	"#LFGHOST",
-	"#BOO",
-	"We Are Coming From The Shadows! #BOO #WAGBOO",
-	"#GhostFollowGhost, right ?"
-];
 
 // Init Twit lib
 var Bot = new Twit({
@@ -113,7 +104,6 @@ function BotStart() {
 						         console.log("> Error: Could not follow user " + userId + ". " + err);
 						        }
 						    });
-
 						}
 
 					}
@@ -134,33 +124,47 @@ function BotStart() {
 	}
 
 }
-https://github.com/viesurvous/raidbot
 // Start bot and timer
 BotStart();
 setInterval(BotStart, INTERVAL);
 
 
-// var TWEET_TO_POST = [
-// 	"@GhostKidDAO follow @GhostKidDAO ?",
-// 	"We Are Coming From The Shadows. #BOO",
-// 	"Where is my @GhostKidDAO fam ? #LFGHOST",
-// 	"JUST #BOOLISH on my bag.",
-// ];
-// // --- POST BOT --- ///
-// function BotTweet() {
+// Set interval time. Try to use a not so small interval to avoid Twitter to lock your account.
+var INTERVAL2 = 1000 * 60 * 60 * 60 // 5min
 
-// 	console.log("> TWEET BOT :  Twitter bot is running (" + Date() + ")...");
+// Init Twit lib
+var Bot = new Twit({
+    consumer_key: TWITTER_CONSUMER_KEY,
+    consumer_secret: TWITTER_CONSUMER_SECRET,
+    access_token: TWITTER_ACCESS_TOKEN,
+    access_token_secret: TWITTER_ACCESS_TOKEN_SECRET
+});
 
-// 	// Reply
-// 	var textToReply = TWEET_TO_POST[Math.floor(Math.random()*TWEET_TO_POST.length)];
-// 	Bot.post('statuses/update', {status: textToReply}, function(err, response){
-// 		if (err) {
-// 			console.log("> Error: Status could not be updated. " + err);
-// 		}
-// 	});
 
-// }
+var HASHTAGS_TO_REPLY = [
+    "#BOOLISH 👻",
+    "#WAGBOO 👻",
+    "#LFGHOST 👻👻",
+    "#BOO !👻",
+    "We are coming from the shadows and the shadows coming from 👻. #BOO #WAGBOO #BOOLISH #LFGHOST",
+    "#GhostFollowGhost, right ? #BOOLISH #BOO #LFGHOST 👻",
+    "Do #GhostFollowGhost ? #BOOLISH #BOO #LFGHOST 👻",
+];
 
+function BotTweet() {
+
+    console.log("> TWEET bot is running (" + Date() + ")...");
+
+    var textToReply = HASHTAGS_TO_REPLY[Math.floor(Math.random() * HASHTAGS_TO_REPLY.length)];
+
+    Bot.post('statuses/update', {
+        status: textToReply
+    }, function (err, response) {
+        if (err) {
+            console.log("> Error: Status could not be updated. " + err);
+        }
+    });
+}
 // Start bot and timer
-// BotTweet();
-// setInterval(BotTweet, 100000); // 3 hours
+BotTweet();
+setInterval(BotTweet, INTERVAL2);
