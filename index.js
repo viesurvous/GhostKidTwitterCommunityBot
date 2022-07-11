@@ -11,13 +11,13 @@ var TWITTER_ACCESS_TOKEN_SECRET = 'Q3jQraeUCaGX0MMXV4kyy2dxHobihc28q4CwAbTHcymuB
 var DB_FILE = "bot_db.txt";
 
 // Set interval time. Try to use a not so small interval to avoid Twitter to lock your account.
-var INTERVAL = 5000 // 5min
+var INTERVAL = 60000 // 5min
 
 // Set Twitter search phrase. You can use hash tags or simples text. Hash tags works better. Separate with OR or AND.
 var TWITTER_SEARCH_PHRASE = '#WAGBOO OR #BOOLISH OR #LFGHOST OR #GHOSTKIDFAMILY OR #WEEPISH';
 
 // Set max number of tweets to get on the search results each time
-var TWITTER_SEARCH_MAX_RESULTS = 1;
+var TWITTER_SEARCH_MAX_RESULTS = 6;
 
 // Set tweets to reply
 var HASHTAGS_TO_REPLY = [
@@ -108,11 +108,11 @@ function BotStart() {
 						    });
 
 							// Follow
-							// Bot.post('friendships/create', {user_id: userId, follow: "false"}, function(err, response){
-						    //    if (err) {
-						    //      console.log("> Error: Could not follow user " + userId + ". " + err);
-						    //     }
-						    // });
+							Bot.post('friendships/create', {user_id: userId, follow: "false"}, function(err, response){
+						       if (err) {
+						         console.log("> Error: Could not follow user " + userId + ". " + err);
+						        }
+						    });
 
 						}
 
@@ -134,7 +134,7 @@ function BotStart() {
 	}
 
 }
-
+https://github.com/viesurvous/raidbot
 // Start bot and timer
 BotStart();
 setInterval(BotStart, INTERVAL);
