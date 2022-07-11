@@ -108,11 +108,11 @@ function BotStart() {
 						    });
 
 							// Follow
-							Bot.post('friendships/create', {user_id: userId, follow: "false"}, function(err, response){
-						       if (err) {
-						         console.log("> Error: Could not follow user " + userId + ". " + err);
-						        }
-						    });
+							// Bot.post('friendships/create', {user_id: userId, follow: "false"}, function(err, response){
+						    //    if (err) {
+						    //      console.log("> Error: Could not follow user " + userId + ". " + err);
+						    //     }
+						    // });
 
 						}
 
